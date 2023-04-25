@@ -5,7 +5,6 @@ using UnityEngine;
 public class Ryan_PodControlHub : MonoBehaviour
 {
     private FPSController pilotReference = null;
-    public int ShiftSpeed = 1;
 
     //Boid variables
     public Boid boid;
@@ -39,20 +38,13 @@ public class Ryan_PodControlHub : MonoBehaviour
 
         if(pilotReference != null)
         {
+            gameObject.GetComponent<MeshRenderer>().enabled = false;
             pilotReference.enabled = false;
-            pilotReference.GetComponent<FollowCamera>().enabled = true;
             pilotReference.GetComponent<Collider>().enabled = false;
 
             boid.enabled = false;
 
-            if (ShiftSpeed == 0) { ShiftSpeed = 1; }
-            float t = 0;
-            while(t < 1f)
-            {
-                t += Time.deltaTime * ShiftSpeed;
-                pilotReference.transform.position = Vector3.Lerp(pilotReference.transform.position, gameObject.transform.position, t);
-            }
-
+            pilotReference.GetComponent<FollowCamera>().enabled = true;
             boid.GetComponentInParent<Ryan_ManualBoidControl>().enabled = true;
 
             yield return null;
@@ -61,6 +53,7 @@ public class Ryan_PodControlHub : MonoBehaviour
 
     private void ExitPilot()
     {
+        gameObject.GetComponent<MeshRenderer>().enabled = true;
         pilotReference.enabled = true;
         pilotReference.GetComponent<FollowCamera>().enabled = false;
         pilotReference.GetComponent<Collider>().enabled = true;

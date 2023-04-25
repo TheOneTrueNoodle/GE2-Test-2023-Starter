@@ -839,7 +839,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 954640556}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.83, z: -7.48}
+  m_LocalPosition: {x: 0, y: 2.41, z: -5.14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1087,7 +1087,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  lookSpeed: 80
+  lookSpeed: 140
   allowPitch: 1
   style:
     m_Name: 
@@ -1644,6 +1644,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 1a166041bf39ce04a81d9ef9bee6ada5,
         type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 1a166041bf39ce04a81d9ef9bee6ada5,
+        type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: bf22feed5cb7e184a9ea911fb9b10d0f, type: 2}
@@ -1692,7 +1697,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9346f85ae75a0ca43ab47640e51b0793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShiftSpeed: 1
   boid: {fileID: 1039729039}
 --- !u!1 &1619820103
 GameObject:
@@ -1775,7 +1779,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9346f85ae75a0ca43ab47640e51b0793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShiftSpeed: 0
   boid: {fileID: 0}
 --- !u!1 &1678432556
 GameObject:
