@@ -50,12 +50,6 @@ public class Ryan_ManualBoidControl : MonoBehaviour
         transform.position += Vector3.up * units;
     }
 
-    void Strafe(float units)
-    {
-        transform.position += gameObject.transform.right * units;
-
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -102,8 +96,6 @@ public class Ryan_ManualBoidControl : MonoBehaviour
         }
 
         float contWalk = Input.GetAxis("Vertical");
-        float contStrafe = Input.GetAxis("Horizontal");
         Walk(contWalk * speed * Time.deltaTime);
-        Strafe(contStrafe * speed * Time.deltaTime);
     }
 }
