@@ -5,7 +5,7 @@ using UnityEngine;
 public class Ryan_PodControlHub : MonoBehaviour
 {
     private FPSController pilotReference = null;
-    public int ShiftSpeed;
+    public int ShiftSpeed = 1;
 
     //Boid variables
     private Boid boid;
@@ -47,6 +47,8 @@ public class Ryan_PodControlHub : MonoBehaviour
             pilotReference.GetComponent<FPSController>().enabled = false;
             pilotReference.GetComponent<FollowCamera>().enabled = true;
             pilotReference.GetComponent<Collider>().enabled = false;
+
+            if(ShiftSpeed == 0) { ShiftSpeed = 1; }
             float t = 0;
             while(t < 1f)
             {
