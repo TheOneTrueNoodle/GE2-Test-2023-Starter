@@ -8,12 +8,7 @@ public class Ryan_PodControlHub : MonoBehaviour
     public int ShiftSpeed = 1;
 
     //Boid variables
-    private Boid boid;
-
-    private void Start()
-    {
-        boid = GetComponentInChildren<Boid>();
-    }
+    public Boid boid;
 
     private void Update()
     {
@@ -44,26 +39,35 @@ public class Ryan_PodControlHub : MonoBehaviour
 
         if(pilotReference != null)
         {
-            pilotReference.GetComponent<FPSController>().enabled = false;
+            pilotReference.enabled = false;
             pilotReference.GetComponent<FollowCamera>().enabled = true;
             pilotReference.GetComponent<Collider>().enabled = false;
 
-            if(ShiftSpeed == 0) { ShiftSpeed = 1; }
+            boid.enabled = false;
+
+            if (ShiftSpeed == 0) { ShiftSpeed = 1; }
             float t = 0;
             while(t < 1f)
             {
                 t += Time.deltaTime * ShiftSpeed;
                 pilotReference.transform.position = Vector3.Lerp(pilotReference.transform.position, gameObject.transform.position, t);
             }
+
+            boid.GetComponent<Ryan_ManualBoidControl>().enabled = true;
+
             yield return null;
         }
     }
 
     private void ExitPilot()
     {
-        pilotReference.GetComponent<FPSController>().enabled = true;
         pilotReference.GetComponent<FollowCamera>().enabled = false;
         pilotReference.GetComponent<Collider>().enabled = true;
+
+
+        boid.GetComponent<Ryan_ManualBoidControl>().enabled = false;
+
+        boid.enabled = true;
         pilotReference = null;
     }
 }

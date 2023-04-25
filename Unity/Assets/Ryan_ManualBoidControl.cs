@@ -1,11 +1,9 @@
-﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using System.Text;
+using UnityEngine;
 
-public class FPSController : MonoBehaviour
+public class Ryan_ManualBoidControl : MonoBehaviour
 {
-    public GameObject Controller;
     public float speed = 50.0f;
     public float lookSpeed = 150.0f;
 
@@ -16,10 +14,6 @@ public class FPSController : MonoBehaviour
     void Start()
     {
         Cursor.visible = false;
-        if (Controller == null)
-        {
-            Controller = Camera.main.gameObject;
-        }
     }
 
     void Yaw(float angle)
@@ -28,16 +22,11 @@ public class FPSController : MonoBehaviour
         transform.rotation = rot * transform.rotation;
     }
 
-    void Roll(float angle)
-    {
-        Quaternion rot = Quaternion.AngleAxis(angle, Vector3.forward);
-        transform.rotation = rot * transform.rotation;
-    }
 
     float invcosTheta1;
 
     void Pitch(float angle)
-    {        
+    {
         float theshold = 0.95f;
         if ((angle > 0 && invcosTheta1 < -theshold) || (angle < 0 && invcosTheta1 > theshold))
         {
@@ -51,7 +40,7 @@ public class FPSController : MonoBehaviour
 
     void Walk(float units)
     {
-        Vector3 forward = Controller.transform.forward;
+        Vector3 forward = gameObject.transform.forward;
         //forward.y = 0;
         forward.Normalize();
         transform.position += forward * units;
@@ -64,8 +53,8 @@ public class FPSController : MonoBehaviour
 
     void Strafe(float units)
     {
-        transform.position += Controller.transform.right * units;
-            
+        transform.position += gameObject.transform.right * units;
+
     }
 
     // Update is called once per frame
@@ -73,24 +62,17 @@ public class FPSController : MonoBehaviour
     {
 
         //Cursor.lockState = CursorLockMode.Confined;
-  
+
         float mouseX, mouseY;
         float speed = this.speed;
 
         invcosTheta1 = Vector3.Dot(transform.forward, Vector3.up);
-
-        float runAxis = 0; // Input.GetAxis("Run Axis");
 
         if (Input.GetKey(KeyCode.Escape))
         {
             Application.Quit();
         }
 
-        if (Input.GetKey(KeyCode.LeftShift) || runAxis != 0)
-        {
-            speed *= 5.0f;
-        }
-            
         if (Input.GetKey(KeyCode.E))
         {
             Fly(Time.deltaTime * speed);
@@ -112,7 +94,7 @@ public class FPSController : MonoBehaviour
 
         mouseX = Input.GetAxis("Mouse X");
         mouseY = Input.GetAxis("Mouse Y");
-            
+
 
         Yaw(mouseX * lookSpeed * Time.deltaTime);
         if (allowPitch)
