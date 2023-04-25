@@ -5,6 +5,12 @@ using UnityEngine;
 public class Ryan_PodControlHub : MonoBehaviour
 {
     private FPSController pilotReference = null;
+    private Boid boid;
+
+    private void Start()
+    {
+        boid = GetComponentInChildren<Boid>();
+    }
 
     private void Update()
     {
