@@ -53,7 +53,7 @@ public class Ryan_PodControlHub : MonoBehaviour
                 pilotReference.transform.position = Vector3.Lerp(pilotReference.transform.position, gameObject.transform.position, t);
             }
 
-            boid.GetComponent<Ryan_ManualBoidControl>().enabled = true;
+            boid.GetComponentInParent<Ryan_ManualBoidControl>().enabled = true;
 
             yield return null;
         }
@@ -66,7 +66,7 @@ public class Ryan_PodControlHub : MonoBehaviour
         pilotReference.GetComponent<Collider>().enabled = true;
 
 
-        boid.GetComponent<Ryan_ManualBoidControl>().enabled = false;
+        boid.GetComponentInParent<Ryan_ManualBoidControl>().enabled = false;
 
         boid.enabled = true;
         pilotReference = null;
