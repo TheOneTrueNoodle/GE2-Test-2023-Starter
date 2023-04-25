@@ -4,15 +4,35 @@ using UnityEngine;
 
 public class Ryan_PodControlHub : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private FPSController pilotReference = null;
+
+    private void Update()
     {
-        
+        if(pilotReference != null)
+        {
+            if (Input.GetKeyDown(KeyCode.Z))
+            {
+                ExitPilot();
+            }
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if(GetComponent<FPSController>())
+        {
+            pilotReference = other.GetComponent<FPSController>();
+            EnterPilot();
+        }
+    }
+
+    private void EnterPilot()
+    {
+
+    }
+
+    private void ExitPilot()
+    {
+        pilotReference = null;
     }
 }
