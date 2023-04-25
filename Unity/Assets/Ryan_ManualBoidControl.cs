@@ -45,11 +45,6 @@ public class Ryan_ManualBoidControl : MonoBehaviour
         transform.position += forward * units;
     }
 
-    void Fly(float units)
-    {
-        transform.position += Vector3.up * units;
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -64,25 +59,6 @@ public class Ryan_ManualBoidControl : MonoBehaviour
         if (Input.GetKey(KeyCode.Escape))
         {
             Application.Quit();
-        }
-
-        if (Input.GetKey(KeyCode.E))
-        {
-            Fly(Time.deltaTime * speed);
-        }
-        if (Input.GetKey(KeyCode.F))
-        {
-            Fly(-Time.deltaTime * speed);
-        }
-
-        if (Input.GetKey(KeyCode.Joystick1Button5))
-        {
-            Fly(speed * Time.deltaTime);
-        }
-
-        if (Input.GetKey(KeyCode.Joystick1Button4))
-        {
-            Fly(-speed * Time.deltaTime);
         }
 
         mouseX = Input.GetAxis("Mouse X");
