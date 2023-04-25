@@ -44,6 +44,7 @@ public class Ryan_PodControlHub : MonoBehaviour
             boid.enabled = false;
 
             pilotReference.GetComponent<FollowCamera>().enabled = true;
+            pilotReference.GetComponent<FollowCamera>().target = boid.camTarget.transform;
             boid.GetComponentInParent<Ryan_ManualBoidControl>().enabled = true;
 
             yield return null;
