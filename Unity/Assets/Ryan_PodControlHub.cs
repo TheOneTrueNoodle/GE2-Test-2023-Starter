@@ -61,6 +61,7 @@ public class Ryan_PodControlHub : MonoBehaviour
 
     private void ExitPilot()
     {
+        pilotReference.enabled = true;
         pilotReference.GetComponent<FollowCamera>().enabled = false;
         pilotReference.GetComponent<Collider>().enabled = true;
 

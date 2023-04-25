@@ -22,7 +22,6 @@ public class Ryan_ManualBoidControl : MonoBehaviour
         transform.rotation = rot * transform.rotation;
     }
 
-
     float invcosTheta1;
 
     void Pitch(float angle)
