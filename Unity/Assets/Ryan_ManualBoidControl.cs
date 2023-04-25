@@ -42,7 +42,6 @@ public class Ryan_ManualBoidControl : MonoBehaviour
         Vector3 forward = gameObject.transform.forward;
         //forward.y = 0;
         forward.Normalize();
-        transform.rotation = Quaternion.Euler(target * units);
         transform.position += forward * units;
     }
 

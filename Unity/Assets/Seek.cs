@@ -8,6 +8,14 @@ public class Seek : SteeringBehaviour
 {
     public GameObject targetGameObject = null;
     public Vector3 target = Vector3.zero;
+    private GameObject defaultTarget;
+    private float WhistleTime = 10f;
+    private float currentWhistleTime;
+
+    private void Start()
+    {
+        defaultTarget = targetGameObject;
+    }
 
     public void OnDrawGizmos()
     {
@@ -29,6 +37,15 @@ public class Seek : SteeringBehaviour
 
     public void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            //Whistle Function
+            targetGameObject = Camera.main.gameObject;
+            currentWhistleTime = WhistleTime;
+        }
+        if(currentWhistleTime > 0) { currentWhistleTime -= Time.deltaTime; }
+        else if(targetGameObject != defaultTarget) { targetGameObject = defaultTarget; }
+
         if (targetGameObject != null)
         {
             target = targetGameObject.transform.position;
