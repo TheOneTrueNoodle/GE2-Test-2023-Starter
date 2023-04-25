@@ -24,7 +24,6 @@ public class Ryan_PodControlHub : MonoBehaviour
     {
         if(other.GetComponent<FPSController>())
         {
-            Debug.Log("Entered Pod");   
             pilotReference = other.GetComponent<FPSController>();
             StartCoroutine(EnterPilot());
         }
